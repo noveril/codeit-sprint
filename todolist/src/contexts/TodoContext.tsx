@@ -1,5 +1,12 @@
 "use client";
-import React, { createContext, useContext, useState, ReactNode } from "react";
+
+import React, {
+  createContext,
+  useContext,
+  useEffect,
+  useState,
+  ReactNode,
+} from "react";
 
 type Todo = {
   id: number;
@@ -20,18 +27,22 @@ type TodoContextType = {
 const TodoContext = createContext<TodoContextType | undefined>(undefined);
 
 export const TodoProvider = ({ children }: { children: ReactNode }) => {
-  const [todos, setTodos] = useState<Todo[]>([
-    { id: 1, name: "비타민 챙겨 먹기", isCompleted: false },
-    { id: 2, name: "운동하기", isCompleted: false },
-    { id: 3, name: "운동 다녀오기", isCompleted: true },
-    { id: 4, name: "비타민 챙겨가기", isCompleted: true },
-  ]);
+  const [todos, setTodos] = useState<Todo[]>([]);
+
+  useEffect(() => {
+    const storedTodos = localStorage.getItem("todos");
+    if (storedTodos) {
+      setTodos(JSON.parse(storedTodos));
+    }
+  }, []);
+
+  useEffect(() => {
+    localStorage.setItem("todos", JSON.stringify(todos));
+  }, [todos]);
 
   const addTodo = (newTodo: Omit<Todo, "id">) => {
-    setTodos((prevTodos) => [
-      ...prevTodos,
-      { id: prevTodos.length + 1, ...newTodo },
-    ]);
+    const newTask = { id: Date.now(), ...newTodo };
+    setTodos((prevTodos) => [...prevTodos, newTask]);
   };
 
   const toggleTodo = (id: number) => {
