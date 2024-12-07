@@ -65,7 +65,9 @@ const TodoDetail = () => {
     }
   };
 
-  const handleInputChange = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
+  const handleInputChange = (
+    e: React.ChangeEvent<HTMLTextAreaElement | HTMLInputElement>
+  ) => {
     const { name, value } = e.target;
     setEditData((prevData) =>
       prevData ? { ...prevData, [name]: value } : prevData
@@ -106,7 +108,13 @@ const TodoDetail = () => {
               </svg>
             )}
           </div>
-          <span className="text-xl font-bold">{editData.name}</span>
+          <input
+            type="text"
+            name="name"
+            value={editData.name}
+            onChange={handleInputChange}
+            className="text-xl font-bold bg-transparent border-none focus:outline-none"
+          />
         </div>
         {/* 이미지 업로드 및 메모 */}
         <div className="flex gap-4 items-start justify-center">
@@ -115,7 +123,7 @@ const TodoDetail = () => {
               <Image
                 src={editData.image}
                 alt="Todo"
-                layout="fill"
+                fill
                 className="object-cover rounded-lg"
               />
             ) : (
@@ -162,14 +170,26 @@ const TodoDetail = () => {
         <div className="flex gap-4 justify-center mt-8">
           <button
             onClick={handleUpdate}
-            className="px-6 py-3 bg-green-500 text-white rounded-full"
+            className="flex items-center gap-2 px-6 py-3 bg-green-500 text-white rounded-full"
           >
+            <Image
+              src="/codeit/check.png"
+              alt="Check Icon"
+              width={20}
+              height={20}
+            />
             수정 완료
           </button>
           <button
             onClick={handleDelete}
-            className="px-6 py-3 bg-red-500 text-white rounded-full"
+            className="flex items-center gap-2 px-6 py-3 bg-red-500 text-white rounded-full"
           >
+            <Image
+              src="/codeit/X.png"
+              alt="Delete Icon"
+              width={20}
+              height={20}
+            />
             삭제하기
           </button>
         </div>
