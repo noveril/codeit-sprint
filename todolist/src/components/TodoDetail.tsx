@@ -77,7 +77,7 @@ const TodoDetail = () => {
   return (
     <div className="bg-slate-100 min-h-screen">
       <NavBar />
-      <div className="max-w-[1200px] mx-auto p-10 flex flex-col items-center gap-6 h-full rounded-lg bg-white">
+      <div className="relative max-w-[1200px] mx-auto p-10 flex flex-col items-center gap-6 min-h-screen rounded-lg bg-white">
         {/* 완료 상태 표시 */}
         <div
           className={`w-[1000px] h-[60px] flex items-center justify-center gap-4 mb-6 p-4 rounded-full cursor-pointer border-2 border-black ${
@@ -167,10 +167,12 @@ const TodoDetail = () => {
           </div>
         </div>
         {/* 수정 및 삭제 버튼 */}
-        <div className="flex gap-4 justify-center mt-8">
+        <div className="flex gap-4 justify-end mt-8 w-full">
           <button
             onClick={handleUpdate}
-            className="flex items-center gap-2 px-6 py-3 bg-green-500 text-white rounded-full"
+            className={`flex items- gap-2 px-6 py-3 rounded-full text-white ${
+              editData.isCompleted ? "bg-lime-400" : "bg-slate-400"
+            }`}
           >
             <Image
               src="/codeit/check.png"
@@ -182,7 +184,9 @@ const TodoDetail = () => {
           </button>
           <button
             onClick={handleDelete}
-            className="flex items-center gap-2 px-6 py-3 bg-red-500 text-white rounded-full"
+            className={`flex items-center gap-4 px-6 py-3 rounded-full text-white ${
+              editData.isCompleted ? "bg-rose-500" : "bg-red-500"
+            }`}
           >
             <Image
               src="/codeit/X.png"
