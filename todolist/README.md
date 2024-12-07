@@ -34,8 +34,13 @@ https://codeitsprint.vercel.app/
 
 - 홈페이지
   ![home](/todolist/image/home.png)
-
 - 진행 중인 할 일이 없을 때:
-  ![emptytodo](/todolist/image/EmptyTodo.png)
+  ![emptytodo](/todolist/image/done.png)
 - 완료된 할 일이 없을 때:
-  ![emptydone](/todolist/image/EmptyDone.png)
+  ![emptydone](/todolist/image/todo.png)
+- 상세 페이지:
+  ![emptydone](/todolist/image/details.png)
+- 항목 수정:
+  ![emptydone](/todolist/image/edit.png)
+- 상세페이지 -> 홈페이지:
+  ![emptydone](/todolist/image/home2.png)
