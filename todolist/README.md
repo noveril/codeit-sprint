@@ -2,7 +2,7 @@
 
 ## 배포 주소
 
-https://codeitsprint.vercel.app/
+https://codeit-sprint-5sr8.vercel.app/
 
 ## 프로젝트 소개
 
